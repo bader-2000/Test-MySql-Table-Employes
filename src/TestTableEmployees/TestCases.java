@@ -20,26 +20,25 @@ public class TestCases extends DataTest {
 	// adding new Row from data to databases
 	@Test (priority = 1  )
 	public void InsertRowData() throws SQLException{
-		String Query = "insert into employees (employeeNumber,lastName,firstName,extension,email,officeCode,reportsTo,jobTitle) "
-				+ "values(1000,'AbuAisha','Khaled','x6532','St.AlAhmed@gmail.com',2,1002,'Doctor')";
 		
-		callWithDatabase(Query);
+		
+		callWithDatabase(queryInsert);
 		
 	}
 	
 	// Modifying some customer data from databases
 	@Test (priority = 2)
 	public void UpdateRowData() throws SQLException{
-		String Qurey = "Update employees set extension = 'x9999',officeCode = 6" + " where employeeNumber = 1000 "; 		
-		callWithDatabase(Qurey);
+				
+		callWithDatabase(qureyUpdate);
 	}
 	
 	// Inquire about data and add it to the site
 	@Test (priority = 3  )
 	public void GetRowData() throws SQLException {
-		String Query  ="select * from employees where employeeNumber = 1000" ;
+		
 		stmt = con.createStatement();
-        rs = stmt.executeQuery(Query);	
+        rs = stmt.executeQuery(queryGet);	
         
 		while (rs.next()){
 			 firstName  = rs.getString("firstName");
@@ -62,8 +61,8 @@ public class TestCases extends DataTest {
 	// Delete the entire row from the database
 	@Test (priority = 4)
 	public void DeleteRowData() throws SQLException{
-	    String Qurey = "delete  from  employees where employeeNumber =1000"; 		
-		callWithDatabase(Qurey);
+	   	
+		callWithDatabase(qureyDelete);
 		
 	}
 	
